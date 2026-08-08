@@ -15,8 +15,7 @@ jobs:
 
       - name: Extraer proyecto AHORA
         run: |
-          unzip -o AHORA_proyecto_para_subir.zip -d proyecto
-          cp -r proyecto/. .
+          unzip -o AHORA_CORREGIDA_v2.zip -d proyecto
 
       - name: Configurar Java
         uses: actions/setup-java@v4
