@@ -18,7 +18,7 @@ jobs:
           unzip -o AHORA_CORREGIDA_v2.zip -d proyecto
 
       - name: Configurar Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
@@ -30,10 +30,12 @@ jobs:
           echo "$PWD/gradle-8.7/bin" >> "$GITHUB_PATH"
 
       - name: Crear aplicación
-        run: gradle assembleDebug --no-daemon
+        run: |
+          cd proyecto
+          gradle assembleDebug --no-daemon
 
       - name: Guardar APK
         uses: actions/upload-artifact@v4
         with:
           name: AHORA-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: proyecto/app/build/outputs/apk/debug/app-debug.apk
